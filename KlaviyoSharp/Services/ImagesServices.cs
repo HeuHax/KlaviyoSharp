@@ -72,13 +72,7 @@ public class ImagesServices : KlaviyoServiceBase, IImageServices
             { new StringContent(image.Attributes.Hidden ? "true" : "false", Encoding.UTF8, MediaTypeNames.Text.Plain), "hidden" }
         };
 
-#if NETSTANDARD2_0
-        //ReadAllBytesAsync not available in NETStandard 2.0
-
-        using var fileContent = new ByteArrayContent(File.ReadAllBytes(image.Attributes.File));
-#else
         using var fileContent = new ByteArrayContent(await File.ReadAllBytesAsync(image.Attributes.File));
-#endif
         fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
         form.Add(fileContent, "file", Path.GetFileName(image.Attributes.File));
 

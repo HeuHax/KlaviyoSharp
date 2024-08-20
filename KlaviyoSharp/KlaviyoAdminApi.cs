@@ -5,7 +5,7 @@ namespace KlaviyoSharp;
 /// </summary>
 public class KlaviyoAdminApi : KlaviyoApiBase
 {
-    const string REVISION = "2024-02-15";
+    const string REVISION = "2024-07-15";
     /// <summary>
     /// Creates a new instance of the Klaviyo Admin API.
     /// </summary>
